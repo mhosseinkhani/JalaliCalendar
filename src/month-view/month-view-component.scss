@@ -1,0 +1,129 @@
+﻿.calendar {
+    display: block;
+    width: 210px;
+    margin: 0 auto;
+    .summery {
+    text-align: center;
+}
+    * {
+        box-sizing: border-box;
+    }
+
+    .calendar-navs {
+        background-color: rgb(0, 162, 255);
+    }
+
+    .month-nav {
+        padding: 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .year-nav {
+        padding: 15px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-family: 'Montserrat';
+    }
+
+    .month-grid {
+        .day-names {
+            display: flex;
+            flex-direction: row;
+            background: cornsilk;
+            border-bottom-right-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+
+        .weeks {
+            display: flex;
+            flex-direction: column;
+             .holiday {
+                background: #ffd7d7;
+            }
+        }
+
+        .week {
+            display: flex;
+            flex-direction: row;
+
+            &:nth-child(even) {
+                background: #f1f1f1;
+            }
+
+           
+        }
+
+        .week-date,
+        .day-name {
+            text-align: center;
+            padding: 15px;
+            display: block;
+            width: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+        .week-date {
+            height: 30px;
+            position: relative;
+
+            .date-text {
+                z-index: 10;
+                font-size: 10px;
+                font-family: 'Montserrat', sans-serif;
+            }
+            
+            &::after {
+                content: '';
+                height: 30px;
+                width: 30px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                border-radius: 50%;
+                transition: background-color 150ms linear, color 150ms linear;
+                z-index: 1;
+            }
+
+            &.enabled {
+                cursor: pointer;
+
+                &:hover {
+                    &:after {
+                        background-color: seagreen;
+                    }
+                }
+            }
+
+            &.selected {
+                color: white;
+
+                &:after {
+                    background-color: teal;
+                }
+
+                &:hover {
+                    &:after {
+                        background-color: teal;
+                    }
+                }
+            }
+
+            &.disabled {
+                color: #ccc;
+            }
+        }
+
+        .today {
+            font-weight: bold;
+            background: chocolate;
+            border-radius: 25px;
+        }
+    }
+}

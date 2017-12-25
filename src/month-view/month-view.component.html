@@ -1,0 +1,24 @@
+﻿<div class="calendar">
+  <div class="summery">
+    {{ currentDate.locale('fa').format('jYYYY') }} {{ currentDate.locale('fa').format('jMMMM') }}
+  </div>
+  <div class="month-grid">
+    <div class="day-names">
+      <div *ngFor="let name of dayNames" class="day-name p9">
+        {{ name }}
+      </div>
+    </div>
+    <div class="weeks">
+      <div *ngFor="let week of weeks" class="week">
+        <ng-container *ngFor="let day of week">
+          <div class="week-date disabled" *ngIf="!isSelectedMonth(day.mDate)" [ngClass]="{holiday:isHoliday(day.mDate) }">
+            <span class="date-text">{{ day.mDate.jDate() }}</span>
+          </div>
+          <div class="week-date enabled" *ngIf="isSelectedMonth(day.mDate)" (click)="selectDate(day)" [ngClass]="{ today: day.today, selected: day.selected ,holiday:isHoliday(day.mDate)}">
+            <span class="date-text">{{ day.mDate.jDate() }}</span>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
